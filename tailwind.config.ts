@@ -7,7 +7,7 @@ const config: Config = {
     extend: {
       colors: {
         ink: { 50: '#f7f8fa', 100: '#eef0f4', 200: '#dfe3ea', 300: '#c4cad6', 400: '#98a1b3', 500: '#6b7488', 600: '#4d5567', 700: '#373e4e', 800: '#232838', 900: '#141826', 950: '#0b0e18' },
-        brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
+        brand: { 50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8', 400: '#a1a1aa', 500: '#71717a', 600: '#27272a', 700: '#18181b', 800: '#101012', 900: '#09090b' },
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],

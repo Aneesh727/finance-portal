@@ -9,3 +9,6 @@ test-results
 playwright-report
 qa/.auth/
 test-results/
+
+.vercel
+.env*
