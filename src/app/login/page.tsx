@@ -34,7 +34,7 @@ function LoginForm() {
     <main className="grid min-h-screen place-items-center px-4">
       <div className="w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center gap-2 text-center">
-          <img src="/logo-wordmark.png" alt="Logo" className="mx-auto h-10 w-auto" />
+          <img src="/logo-wordmark.png" alt="Logo" className="mx-auto h-20 w-auto" />
           {/* <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-600 text-white shadow-card"><img src="/icon.png" alt="Logo" className="mx-auto h-8 w-auto" /></span> */}
           <h1>Sign in to Finance Portal</h1>
           <p className="text-sm text-ink-500">Project cost &amp; profitability management</p>

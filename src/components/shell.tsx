@@ -103,7 +103,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
 // }
 
 function Brand({ name }: { name?: string }) {
-  return <Link href="/" className="flex h-14 items-center gap-2.5 border-b border-ink-100 px-4"><img src="/logo-wordmark.png" alt={name ?? 'Logo'} className="h-6 w-auto" /></Link>;
+  return (
+    <Link href="/" className="flex h-14 items-center gap-2.5 border-b border-ink-100 px-4">
+      <img src="/logo-wordmark.png" alt={name ?? 'Logo'} className="h-9 w-auto" />
+    </Link>
+  );
 }
 
 function useClickAway(ref: React.RefObject<HTMLElement | null>, on: () => void, active: boolean) {
