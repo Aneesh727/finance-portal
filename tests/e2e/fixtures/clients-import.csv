@@ -1,0 +1,5 @@
+Company Name,Contact Person,Email,Phone,Currency,Country
+Import Test One Pvt Ltd,Riya Shah,riya@importone.test,+91 98765 43210,INR,India
+Import Test Two LLP,Karan,not-an-email,,INR,India
+=cmd|' /C calc'!A0,Bad,bad@x.test,,INR,India
+Import Test One Pvt Ltd,Dup,dup@importone.test,,INR,India

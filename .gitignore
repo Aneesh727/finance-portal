@@ -1,0 +1,11 @@
+node_modules
+.next
+.env
+storage/*
+!storage/.gitkeep
+backups
+*.tsbuildinfo
+test-results
+playwright-report
+qa/.auth/
+test-results/

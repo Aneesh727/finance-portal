@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "invoices_period_uq" ON "invoices" USING btree ("project_id","period_start") WHERE "invoices"."period_start" is not null and "invoices"."status" <> 'CANCELLED';
