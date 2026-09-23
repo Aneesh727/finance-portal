@@ -11,33 +11,43 @@ import { ago } from '@/ui/format';
 
 interface NavItem { href: string; label: string; icon: React.ComponentType<{ className?: string }>; any: string[] }
 const NAV: { group: string; items: NavItem[] }[] = [
-  { group: 'Overview', items: [
-    { href: '/', label: 'Dashboard', icon: LayoutDashboard, any: ['dashboard.view'] },
-    { href: '/projects', label: 'Projects', icon: Briefcase, any: ['projects.view'] },
-    { href: '/clients', label: 'Clients', icon: Building2, any: ['clients.view'] },
-    { href: '/deals', label: 'Deals & quotes', icon: Handshake, any: ['deals.view'] },
-  ] },
-  { group: 'Money', items: [
-    { href: '/costs', label: 'Project costs', icon: Wallet, any: ['costs.view'] },
-    { href: '/billing', label: 'Invoices & payments', icon: Receipt, any: ['payments.view'] },
-    { href: '/expenses', label: 'Company expenses', icon: CircleDollarSign, any: ['expenses.view'] },
-    { href: '/retainers', label: 'Retainers', icon: Repeat, any: ['retainers.view'] },
-    { href: '/employee-costs', label: 'Employee cost allocation', icon: CalendarClock, any: ['allocations.manage'] },
-  ] },
-  { group: 'People', items: [
-    { href: '/resources', label: 'Resources', icon: Users, any: ['resources.view'] },
-    { href: '/vendors', label: 'Vendors', icon: Truck, any: ['resources.view'] },
-  ] },
-  { group: 'Insights', items: [
-    { href: '/reports', label: 'Reports', icon: BarChart3, any: ['reports.view', 'forecast.view'] },
-    { href: '/approvals', label: 'Approvals', icon: CheckSquare, any: ['approvals.decide', 'projects.view'] },
-  ] },
-  { group: 'Admin', items: [
-    { href: '/import', label: 'Import data', icon: FileUp, any: ['import.run'] },
-    { href: '/audit', label: 'Audit log', icon: FileClock, any: ['audit.view'] },
-    { href: '/users', label: 'Users & roles', icon: UserCog, any: ['users.manage', 'roles.manage'] },
-    { href: '/settings', label: 'Settings', icon: Settings, any: ['settings.manage', 'backup.run'] },
-  ] },
+  {
+    group: 'Overview', items: [
+      { href: '/', label: 'Dashboard', icon: LayoutDashboard, any: ['dashboard.view'] },
+      { href: '/projects', label: 'Projects', icon: Briefcase, any: ['projects.view'] },
+      { href: '/clients', label: 'Clients', icon: Building2, any: ['clients.view'] },
+      { href: '/deals', label: 'Deals & quotes', icon: Handshake, any: ['deals.view'] },
+    ]
+  },
+  {
+    group: 'Money', items: [
+      { href: '/costs', label: 'Project costs', icon: Wallet, any: ['costs.view'] },
+      { href: '/billing', label: 'Invoices & payments', icon: Receipt, any: ['payments.view'] },
+      { href: '/expenses', label: 'Company expenses', icon: CircleDollarSign, any: ['expenses.view'] },
+      { href: '/retainers', label: 'Retainers', icon: Repeat, any: ['retainers.view'] },
+      { href: '/employee-costs', label: 'Employee cost allocation', icon: CalendarClock, any: ['allocations.manage'] },
+    ]
+  },
+  {
+    group: 'People', items: [
+      { href: '/resources', label: 'Resources', icon: Users, any: ['resources.view'] },
+      { href: '/vendors', label: 'Vendors', icon: Truck, any: ['resources.view'] },
+    ]
+  },
+  {
+    group: 'Insights', items: [
+      { href: '/reports', label: 'Reports', icon: BarChart3, any: ['reports.view', 'forecast.view'] },
+      { href: '/approvals', label: 'Approvals', icon: CheckSquare, any: ['approvals.decide', 'projects.view'] },
+    ]
+  },
+  {
+    group: 'Admin', items: [
+      { href: '/import', label: 'Import data', icon: FileUp, any: ['import.run'] },
+      { href: '/audit', label: 'Audit log', icon: FileClock, any: ['audit.view'] },
+      { href: '/users', label: 'Users & roles', icon: UserCog, any: ['users.manage', 'roles.manage'] },
+      { href: '/settings', label: 'Settings', icon: Settings, any: ['settings.manage', 'backup.run'] },
+    ]
+  },
 ];
 
 export function Shell({ children }: { children: React.ReactNode }) {
@@ -88,8 +98,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
   );
 }
 
+// function Brand({ name }: { name?: string }) {
+//   return <Link href="/" className="flex h-14 items-center gap-2.5 border-b border-ink-100 px-4"><span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white"><Landmark className="h-4 w-4" /></span><span className="min-w-0 truncate text-sm font-semibold text-ink-900">{name ?? 'Finance Portal'}</span></Link>;
+// }
+
 function Brand({ name }: { name?: string }) {
-  return <Link href="/" className="flex h-14 items-center gap-2.5 border-b border-ink-100 px-4"><span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white"><Landmark className="h-4 w-4" /></span><span className="min-w-0 truncate text-sm font-semibold text-ink-900">{name ?? 'Finance Portal'}</span></Link>;
+  return <Link href="/" className="flex h-14 items-center gap-2.5 border-b border-ink-100 px-4"><img src="/logo-wordmark.png" alt={name ?? 'Logo'} className="h-6 w-auto" /></Link>;
 }
 
 function useClickAway(ref: React.RefObject<HTMLElement | null>, on: () => void, active: boolean) {
@@ -138,7 +152,7 @@ function Notifications() {
   useEffect(() => { const t = setInterval(reload, 60_000); return () => clearInterval(t); }, [reload]);
   const unread = meta?.unread ?? 0;
   const readAll = async () => { await api.post('/api/notifications/read', { all: true }); reload(); };
-  const go = async (n: Notif) => { setOpen(false); if (!n.read) { await api.post('/api/notifications/read', { ids: [n.id] }).catch(() => {}); reload(); } if (n.link) router.push(n.link); };
+  const go = async (n: Notif) => { setOpen(false); if (!n.read) { await api.post('/api/notifications/read', { ids: [n.id] }).catch(() => { }); reload(); } if (n.link) router.push(n.link); };
   return (
     <div ref={ref} className="relative">
       <button className="btn-ghost btn-icon relative" aria-label={`Notifications${unread ? `, ${unread} unread` : ''}`} onClick={() => { setOpen(!open); if (!open) reload(); }}>
